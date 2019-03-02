@@ -1,21 +1,14 @@
-//Then add collision detection and death/lose function
-//Add sound
-//Add restart button
-//Add Start button
-
-var pipePair = [];
-
-
 //gets random number between 180 and 480
 var getRandY = function(){
     let newY = Math.floor(Math.random()*300) + 180;
     return newY;
 }
+//get y location (for pipe pairing)
 var getY = function(whos){
     return whos.y - 980;
 }
-
-var move = function(pipe1,pipe2){
+//moves pipes to left
+var move = function(pipe1,pipe2, lose){
     pipe1.x -= 4;
     pipe2.x = pipe1.x;
 }
@@ -28,7 +21,7 @@ class Pipe{
         this.y = p.y;
         this.velX = p.velX;
     }
-
+    //pipe methods
     show(pic){
         image(pic,this.x, this.y, this.width, this.height);
         // ellipse(this.x, this.y, 5,5)
@@ -36,11 +29,7 @@ class Pipe{
 
 }
 
-
-//480 is the lowest
-//100 highest
-
-
+//New pipes
 var pipeUp = new Pipe({
     height: 800,
     width: 100, 
@@ -57,7 +46,6 @@ var pipeDown = new Pipe({
     velX: 20,
 });
 
-
 var pipeUp2 = new Pipe({
     height: 800,
     width: 100, 
@@ -73,8 +61,6 @@ var pipeDown2 = new Pipe({
     y: getY(pipeUp2),
     velX: 20,
 });
-
-
 
 var pipeUp3 = new Pipe({
     height: 800,

@@ -2,7 +2,15 @@
 var xPos = 50;
 var yPos = 30;
 
-var die; //death function
+
+var isWinning = function(){
+    if(yPos >= 500)
+    {
+        return false;
+    } else {
+        return true
+    }
+}
 
 class Bird{
     constructor(b){
@@ -12,7 +20,7 @@ class Bird{
         this.width = b.width;
         this.height = b.height;
     }
-
+    //Bird Methods 
     gravity(){
         if(yPos < 500){
             this.velY += gravity;
@@ -28,18 +36,15 @@ class Bird{
             yPos+= this.velY;
         }
     }
-
-
-    // velY < 6 - up      velY > 6 -  down
-
     show(){
         push();
-        // imageMode(CENTER);
         translate(xPos, yPos);
-        if(this.velY < 1) {
+        if(this.velY < 1 && yPos < 500) {
             rotate(-PI/ 6);
-        } else {
+        } else if(this.velY < 10 && yPos < 500) {
             rotate(PI/ 8.5);
+        } else if(!isWinning()){
+            rotate(PI/2);
         }
         // rect(this.x, this.y, this.width, this.height);
         image(bird,this.x, this.y, this.width, this.height);
@@ -52,5 +57,6 @@ var flappy = new Bird({
     x:  0,
     y:  0,
     width: 70,
-    height:  50
+    height:  50,
+
 });
