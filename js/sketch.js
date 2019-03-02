@@ -76,7 +76,7 @@ function preload(){
     bird = loadImage('img/flappy.png');
     pipeUpPic = loadImage('img/pipeUp.png');
     pipeDownPic = loadImage('img/pipeDown.png');
-    over = loadImage('img/gameOver.png');
+    over = loadImage('img/gameover.png');
 }
 
 function setup(){
