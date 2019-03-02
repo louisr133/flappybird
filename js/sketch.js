@@ -12,7 +12,7 @@ function preload(){
     bg = loadImage('img/flappybackground.png');
     ground = loadImage('img/ground.png');
     bird = loadImage('img/flappy.png');
-    pipeUpPic = loadImage('img/pipeUP.png');
+    pipeUpPic = loadImage('img/pipeUp.png');
     pipeDownPic = loadImage('img/pipeDown.png');
 }
 
@@ -36,7 +36,6 @@ function draw(){
     if(start){
 
         background(bg);
-        // image(flappyLogo, 0, height/2, 331,100)
     
         //Show functions
         pipeUp.show(pipeUpPic);
@@ -49,6 +48,7 @@ function draw(){
         flappy.show();
         flappy.gravity();
 
+        //while flappy hasn't lost
         if(isWinning()){
 
             //First pipe pair  functions
@@ -87,7 +87,7 @@ function draw(){
         textSize(25);
         text(`${total}`, width/2, 50)
     }
-
+    //created
     textSize(14);
     text('Created by Louis Roman', 600, 590);
 }
