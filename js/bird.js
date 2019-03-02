@@ -1,4 +1,4 @@
-
+var gameOver = false;
 var xPos = 50;
 var yPos = 300;
 
@@ -6,9 +6,7 @@ var yPos = 300;
 var isWinning = function(){
     if(yPos >= 500 || pipeUp.collisionBttm() || pipeUp2.collisionBttm()|| pipeUp3.collisionBttm() || pipeDown.collisionAbove() || pipeDown2.collisionAbove()|| pipeDown3.collisionAbove())
     {
-        return false;
-    } else {
-        return true
+        gameOver = true;
     }
 }
 
@@ -40,24 +38,17 @@ class Bird{
         push();
         translate(xPos, yPos);
 
-
-        if(this.velY < 1 && isWinning()) {
+        if(this.velY < 1 && !gameOver) {
             rotate(-PI/ 6);
-        } else if(this.velY >=1 && isWinning()) {
+        } else if(this.velY >=1 && !gameOver) {
             rotate(PI/ 8.5);
-        } else if(!isWinning()){
+        } else if(gameOver){
+            translate(xPos,0)
             rotate(PI/2);
         }
 
-
         fill(0,255,0);
-
-        //hitbox this.x+7, this.y+4, this.width-12, this.height-7
-        // rect(this.x+7, this.y+4, this.width-12, this.height-7);
         image(bird,this.x, this.y, this.width, this.height);
-        // ellipse(this.x, this.y, 5,5)
-
-        //posibly going to add collision detection here
         pop();
     }
 }

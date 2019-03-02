@@ -1,7 +1,3 @@
-//collision test if the pipe hits the bird
-
-
-
 //gets random number between 180 and 480
 var getRandY = function(){
     let newY = Math.floor(Math.random()*300) + 180;
@@ -10,7 +6,7 @@ var getRandY = function(){
 //get y location (for pipe pairing)
 var getY = function(whos){
     //980
-    return whos.y - 980;
+    return whos.y - 950;
 }
 //moves pipes to left
 var move = function(pipe1,pipe2, lose){
@@ -36,12 +32,10 @@ class Pipe{
         }
     }
     collisionAbove(){
-        if(this.x <= xPos + flappy.width && xPos <= this.x + this.width && this.y + 800 > yPos-4){
+        if(this.x <= xPos + flappy.width-12 && xPos <= this.x + this.width && this.y + 800 > yPos-7){
             return true;
         }
-
     }
-
 }
 
 //New pipes
