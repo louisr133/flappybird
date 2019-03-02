@@ -1,11 +1,73 @@
-var bird, pipeUpPic ,pipeDownPic, bg, bgStart, startButton, flappyLogo, ground, flap;
+var bird, pipeUpPic ,pipeDownPic, bg, bgStart, startButton, flappyLogo, ground, flap, over;
 var gravity = .15;
 var total = 0;
 var start = false;
 
 
+var restart = function(){
+    total = 0;
+    start = false;
+    gameOver = false;
+    xPos = 50;
+    yPos = 300;
+
+    pipeUp = new Pipe({
+        height: 800,
+        width: 100, 
+        x: 300,
+        y: getRandY(),
+        velX: 20,
+    });
+    
+    pipeDown = new Pipe({
+        height: 800,
+        width: 100, 
+        x: pipeUp.x,
+        y: getY(pipeUp),
+        velX: 20,
+    });
+    
+    pipeUp2 = new Pipe({
+        height: 800,
+        width: 100, 
+        x: 600,
+        y: getRandY(),
+        velX: 20,
+    });
+    
+    pipeDown2 = new Pipe({
+        height: 800,
+        width: 100, 
+        x: pipeUp2.x,
+        y: getY(pipeUp2),
+        velX: 20,
+    });
+    
+    pipeUp3 = new Pipe({
+        height: 800,
+        width: 100, 
+        x: 900,
+        y: getRandY(),
+        velX: 20,
+    });
+    
+    pipeDown3 = new Pipe({
+        height: 800,
+        width: 100, 
+        x: pipeUp3.x,
+        y: getY(pipeUp3),
+        velX: 20,
+    });
+
+}
+
+
 function preload(){ 
+    //sounds
     flap = loadSound('sounds/wingFlap.mp3');
+
+    //images
+
     bgStart = loadImage('img/start-game.jpg');
     startButton = loadImage('img/start-button.png');
     flappyLogo = loadImage('img/flappyLogo.png');
@@ -14,6 +76,7 @@ function preload(){
     bird = loadImage('img/flappy.png');
     pipeUpPic = loadImage('img/pipeUp.png');
     pipeDownPic = loadImage('img/pipeDown.png');
+    over = loadImage('img/gameOver.png');
 }
 
 function setup(){
@@ -34,6 +97,7 @@ function draw(){
 
 
     if(start){
+        isWinning();
 
         background(bg);
     
@@ -49,7 +113,7 @@ function draw(){
         flappy.gravity();
 
         //while flappy hasn't lost
-        if(isWinning()){
+        if(!gameOver){
 
             //First pipe pair  functions
             move(pipeUp, pipeDown);
@@ -82,23 +146,36 @@ function draw(){
             }
     
         }
+
+        if(gameOver){
+            image(over, 230, 150, 331,100);
+            fill(0);
+            textSize(25);
+            text(`Press 'n' to start a new game!`, 240, 300)
+        }
+
+
         //Score
-        stroke(255);
+        fill(225);
         textSize(25);
         text(`${total}`, width/2, 50)
-    }
+    } 
     //created
+    fill(0);
     textSize(14);
     text('Created by Louis Roman', 600, 590);
 }
 
 
 function keyPressed(){
-    switch(key){
-        case ' ':
+    if(keyCode == 32){
+        if(!gameOver){
             flappy.flap();
             flap.play();
-            start = true;
-            break;
+        }
+        start = true;
+    }
+    if(keyCode == 78 ){
+        restart();
     }
 }

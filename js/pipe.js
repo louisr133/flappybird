@@ -5,7 +5,8 @@ var getRandY = function(){
 }
 //get y location (for pipe pairing)
 var getY = function(whos){
-    return whos.y - 980;
+    //980
+    return whos.y - 950;
 }
 //moves pipes to left
 var move = function(pipe1,pipe2, lose){
@@ -24,9 +25,17 @@ class Pipe{
     //pipe methods
     show(pic){
         image(pic,this.x, this.y, this.width, this.height);
-        // ellipse(this.x, this.y, 5,5)
     }
-
+    collisionBttm(){
+        if(this.x <= xPos + flappy.width-12 && xPos <= this.x + this.width && yPos + flappy.height-7 >= this.y){
+            return true;
+        }
+    }
+    collisionAbove(){
+        if(this.x <= xPos + flappy.width-12 && xPos <= this.x + this.width && this.y + 800 > yPos-7){
+            return true;
+        }
+    }
 }
 
 //New pipes

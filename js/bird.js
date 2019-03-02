@@ -1,14 +1,12 @@
-
+var gameOver = false;
 var xPos = 50;
-var yPos = 30;
+var yPos = 300;
 
 
 var isWinning = function(){
-    if(yPos >= 500)
+    if(yPos >= 500 || pipeUp.collisionBttm() || pipeUp2.collisionBttm()|| pipeUp3.collisionBttm() || pipeDown.collisionAbove() || pipeDown2.collisionAbove()|| pipeDown3.collisionAbove())
     {
-        return false;
-    } else {
-        return true
+        gameOver = true;
     }
 }
 
@@ -22,7 +20,7 @@ class Bird{
     }
     //Bird Methods 
     gravity(){
-        if(yPos < 500){
+        if(yPos < 550){
             this.velY += gravity;
             yPos += this.velY;
         }  
@@ -31,7 +29,7 @@ class Bird{
     flap(){
         if(yPos > 45){
             this.velY = -5;
-        } else if(yPos >= 500){
+        } else if(yPos <= 550){
             this.velY = -5;
             yPos+= this.velY;
         }
@@ -39,16 +37,18 @@ class Bird{
     show(){
         push();
         translate(xPos, yPos);
-        if(this.velY < 1 && yPos < 500) {
+
+        if(this.velY < 1 && !gameOver) {
             rotate(-PI/ 6);
-        } else if(this.velY < 10 && yPos < 500) {
+        } else if(this.velY >=1 && !gameOver) {
             rotate(PI/ 8.5);
-        } else if(!isWinning()){
+        } else if(gameOver){
+            translate(xPos,0)
             rotate(PI/2);
         }
-        // rect(this.x, this.y, this.width, this.height);
+
+        fill(0,255,0);
         image(bird,this.x, this.y, this.width, this.height);
-        // ellipse(this.x, this.y, 5,5)
         pop();
     }
 }
