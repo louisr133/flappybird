@@ -33,6 +33,7 @@ function draw(){
     text('Press Space Bar to Begin', 280, 360);
 
 
+
     if(start){
 
         background(bg);
@@ -83,11 +84,12 @@ function draw(){
     
         }
         //Score
-        stroke(255);
+        fill(225);
         textSize(25);
         text(`${total}`, width/2, 50)
     }
     //created
+    fill(0);
     textSize(14);
     text('Created by Louis Roman', 600, 590);
 }
@@ -96,7 +98,9 @@ function draw(){
 function keyPressed(){
     switch(key){
         case ' ':
-            flappy.flap();
+            if(isWinning()){
+                flappy.flap();
+            }
             flap.play();
             start = true;
             break;

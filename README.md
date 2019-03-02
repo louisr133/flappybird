@@ -5,5 +5,6 @@ Created by Louis Roman, the Beast from virginia, the JavaScript Dominator, the S
 
 
 Things Left To Do:
-[]Then add collision detection and death/lose function
+[x]Then add collision detection
+[]death/lose function
 []Add restart button
