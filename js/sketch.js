@@ -1,4 +1,4 @@
-var bird, pipeUpPic ,pipeDownPic, bg, bgStart, startButton, flappyLogo, ground, flap, over;
+var bird, pipeUpPic ,pipeDownPic, bg, bgStart, startButton, flappyLogo, ground, flap, over, miley;
 var gravity = .15;
 var total = 0;
 var start = false;
@@ -67,7 +67,6 @@ function preload(){
     flap = loadSound('sounds/wingFlap.mp3');
 
     //images
-
     bgStart = loadImage('img/start-game.jpg');
     startButton = loadImage('img/start-button.png');
     flappyLogo = loadImage('img/flappyLogo.png');
