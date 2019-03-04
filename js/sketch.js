@@ -14,7 +14,7 @@ var restart = function(){
     pipeUp = new Pipe({
         height: 800,
         width: 100, 
-        x: 300,
+        x: 600,
         y: getRandY(),
         velX: 20,
     });
@@ -30,7 +30,7 @@ var restart = function(){
     pipeUp2 = new Pipe({
         height: 800,
         width: 100, 
-        x: 600,
+        x: 1000,
         y: getRandY(),
         velX: 20,
     });
@@ -46,7 +46,7 @@ var restart = function(){
     pipeUp3 = new Pipe({
         height: 800,
         width: 100, 
-        x: 900,
+        x: 1400,
         y: getRandY(),
         velX: 20,
     });
@@ -118,7 +118,7 @@ function draw(){
             move(pipeUp, pipeDown);
 
             if(pipeUp.x < -pipeUp.width){
-                pipeUp.x = width;
+                pipeUp.x = getX(pipeUp3);
                 pipeUp.y = getRandY();
                 pipeDown.y = getY(pipeUp);
                 total += 1;
@@ -128,7 +128,7 @@ function draw(){
             move(pipeUp2, pipeDown2);
     
             if(pipeUp2.x < -pipeUp2.width){
-                pipeUp2.x = width;
+                pipeUp2.x = getX(pipeUp);
                 pipeUp2.y = getRandY();
                 pipeDown2.y = getY(pipeUp2);
                 total += 1;
@@ -138,7 +138,7 @@ function draw(){
             move(pipeUp3, pipeDown3);
     
             if(pipeUp3.x < -pipeUp3.width){
-                pipeUp3.x = width;
+                pipeUp3.x = getX(pipeUp2);
                 pipeUp3.y = getRandY();
                 pipeDown3.y = getY(pipeUp3);
                 total += 1;

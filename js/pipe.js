@@ -8,6 +8,10 @@ var getY = function(whos){
     //980
     return whos.y - 950;
 }
+
+var getX = function(whos){
+    return whos.x + 400;
+}
 //moves pipes to left
 var move = function(pipe1,pipe2, lose){
     pipe1.x -= 4;
@@ -42,7 +46,7 @@ class Pipe{
 var pipeUp = new Pipe({
     height: 800,
     width: 100, 
-    x: 300,
+    x: 600,
     y: getRandY(),
     velX: 20,
 });
@@ -58,7 +62,7 @@ var pipeDown = new Pipe({
 var pipeUp2 = new Pipe({
     height: 800,
     width: 100, 
-    x: 600,
+    x: 1000,
     y: getRandY(),
     velX: 20,
 });
@@ -74,7 +78,7 @@ var pipeDown2 = new Pipe({
 var pipeUp3 = new Pipe({
     height: 800,
     width: 100, 
-    x: 900,
+    x: 1400,
     y: getRandY(),
     velX: 20,
 });
